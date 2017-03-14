@@ -1,0 +1,23 @@
+This project implements three patterns: Observer, Strategy and Template Method.
+The User is the subject of the observer pattern while the ChatBots are the
+observers to the user.
+
+The ChatBots all implement the template method pattern.
+The base class is ChatBots and the template method is enterChat().
+All the bots enter the chat by adding themselves as observers to
+User. Then getting the filename containing their responses.
+Opening the file and creating a hash to hold the responses.
+Then they say their greeting and set up their response strategies.
+The subclasses that follow this template method are AngryChatBot, HappyChatBot,
+and DepressedChatBot.
+The update method, a requirement for the observers in the Observe pattern,
+is the same for all chat bots and is in the ChatBot class. The update method
+is also the method that determines what strategy the chat bot wants to use to
+respond to the user. Here is where the strategy method occurs.
+Every chat bot needs to respond to the user but depending on whether or not
+the user string matches a key in the chat bot response hash, asks a question,
+or says one word, determines how the bot responds. Once it has been determined
+what type of strategy the bot should use, the generateResponse method is called
+for that response strategy class.
+If the strategy of choice is to end the conversation. The bot says their
+good bye and deregisters as an observer.
